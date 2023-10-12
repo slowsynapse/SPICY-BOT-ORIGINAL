@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "spice-slp-token",
+  "private_key_id": "e17e0c3bb681a1327426d387c8fa796dd835f6b9",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQCwNKhKzyB0zSmP\nuZGRNvu7PmMjfUr7ADa9J8l/F6CIqilCNotDhqDaF0fea8tYc7K6KY/++BMNlMla\n/H2A5ODWuFzrkWP72L5GYcFckDXugbAwnFoPiKvgj5rY9ExORP7PiXbh7IqwcapW\nmsfJOXtnPc4pbtmF8RktEvbMaLlbNcjE9slzZTsQuvX+V9fmV5w6iHfmNsizb8p6\nv63EJaT/8gEApSARg8S1fhvudVwcayukhkGn+/5vY4Ag7H7sRsuxIp9DbT5zBEIX\nB5HAtxLkVGa3kDg3ZdQuzeC6ZY7KG54KIGJnBxDI+jNuJL3zuFAr6UW7s2sqOKb7\nmU3Gnd7rAgMBAAECggEABZAnmA+27CrmDMxEnA1OWU3uRZN1izwM8CcD3q8ggNOj\n1A3H6EIXNDYs19AzbjiXIKH3vTVC9Lvst4YCjbNzT5QoTmwblKygs3woZZG+Owvv\nYFX2e7ouBpEz5Fi+oOH7b70VwcdggZLuAu9M9iE06U6lHvv7ZiRKv9wBMdi2XBcD\nNK7r6rJe75Ps5724/JTAFaueWxfth8j8WWyR5iliBsylZEAOLnX8k0++Mhj0f4Ew\nRaxiG9ropEaXgxCCGsWVwMDIwQd4062IjLxyalRgZEC7lPUgMUWhJPwc01RFklNv\nSBXhGp7SAKzhskAiGz4U6nXb3bx3bfYFphbieYm/IQKBgQDYnjb4eOLbfkJIqdnz\n4GFXM8C2UTR8Wc9qz2mSisoE3ZFccWe4X7uEFwCnZ6Y7AfMt9+bTLN+Kg9axaBj7\ny5/VA3yxrzf7ghCbMgRMjyt1AZ9E66L5cFepZdZHB5P3JeiLdc59tDlfFD3bC5fl\n4+CrNWCqqFf+5D2Gbs8mGBh2+QKBgQDQPZTSyRD6H9LFdNR2gM/VJ6UxSToW78Oo\n6yWikh22YdVxVizMz1FgRPvoYU1IQOO9zujeU3LHVDS23zSyluONHPYbi4v/G5se\nkln0e+byPi39fMPxolhLnqmtZgdXpJ/4qBUJ5DhgsAHcKa94YFKUXzD35EXqZGAG\nVYPWTRTKAwKBgGIAYnpTpr8LBk39mj+9mgxru5pAbvB7aV23bNoBtJgy7drW68f8\nd8ew6HjUad50aWK4r1OHD7OJJg6pO/RfEXa71yREU52UIJM2M7+3Xj/XdgkmWltj\nuiVHj4QfJ5A/NFA0AjHY4cPkUn/RZO17BWAwDAXpl7YX6MXzSADCEf9xAoGBALIz\ncK7s94VERGdLMiHy22fqVFgX9Qj5xzM/f2ZeqeSQVkp110KxS08Z2YSj97GULhAZ\nB3hyau+e5Ll1yy/lJfd1SDqMMZJu+lCwJyCsAxdcFJku8rNOHUchEMzdWf0rWOY+\nWDqtvX0oQX85gPp/W0uzJkGMbDRID1B8T6TNM7QnAoGBALtSpVdlCZP8+6/asde6\nMBtmFpM6r6xekYHS1ETv8Xo7L6FNLNCQJuWKBmiMuzAlmV+DcuSsYqhyCFCjviPc\n5BVCudq5wIpXeKCAL36qdwISBG8QdLC4Vt5bvItRpfmFy01dRqVabQ4M+1ND68q4\n+nltIkiHtuCfBzaZvzbi9q5v\n-----END PRIVATE KEY-----\n",
+  "client_email": "gcs-service-account@spice-slp-token.iam.gserviceaccount.com",
+  "client_id": "107435460466462714801",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/gcs-service-account%40spice-slp-token.iam.gserviceaccount.com"
+}

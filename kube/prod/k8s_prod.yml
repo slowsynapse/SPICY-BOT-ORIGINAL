@@ -1,0 +1,227 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: spicebot
+  namespace: spice-prod
+  labels:
+    app: spicebot
+spec:
+  selector:
+    app: spicebot
+  type: NodePort
+  ports:
+    - name: backend
+      port: 8000
+      targetPort: 8000
+      protocol: TCP
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: spicebot
+  namespace: spice-prod
+  labels:
+    app: spicebot
+spec:
+  replicas: 1
+  selector:
+    matchLabels:  
+      app: spicebot
+  template:
+    metadata:
+      labels:
+        app: spicebot
+    spec:
+      containers:
+        - name: spicebot
+          image: 967349720785.dkr.ecr.ap-southeast-1.amazonaws.com/spicebot-prod:58b38a7a3366
+          env:
+            - name: DEPLOYMENT_INSTANCE
+              value: prod
+            - name: POSTGRES_DB
+              value: spicebot-prod
+            - name: POSTGRES_HOST
+              valueFrom:
+                secretKeyRef:
+                  name: postgres-credentials
+                  key: host
+            - name: POSTGRES_USER
+              valueFrom:
+                secretKeyRef:
+                  name: postgres-credentials
+                  key: username
+            - name: POSTGRES_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: postgres-credentials
+                  key: password
+            - name: REDIS_HOST
+              valueFrom:
+                secretKeyRef:
+                  name: redis-credentials
+                  key: hostname
+            - name: REDIS_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: redis-credentials
+                  key: password
+            - name: REDIS_PORT
+              valueFrom:
+                secretKeyRef:
+                  name: redis-credentials
+                  key: port
+            - name: SLACK_CLIENT_ID
+              valueFrom:
+                secretKeyRef:
+                  name: other-credentials
+                  key: slackclientid
+            - name: SLACK_CLIENT_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: other-credentials
+                  key: slackclientsecret
+            - name: SLACK_VERIFICATION_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: other-credentials
+                  key: slackverificationtoken
+            - name: SLACK_BOT_USER_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: other-credentials
+                  key: slackbotusertoken
+            - name: SLACK_METRIC_CHANNEL
+              valueFrom:
+                secretKeyRef:
+                  name: other-credentials
+                  key: slackmetricchannel
+            - name: TELEGRAM_BOT_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: other-credentials
+                  key: telegrambottoken
+            - name: TELEGRAM_BOT_USER
+              valueFrom:
+                secretKeyRef:
+                  name: other-credentials
+                  key: telegrambotuser
+            - name: TWITTER_CONSUMER_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: other-credentials
+                  key: twitterconsumerkey
+            - name: TWITTER_CONSUMER_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: other-credentials
+                  key: twitterconsumersecret
+            - name: TWITTER_ACCESS_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: other-credentials
+                  key: twitteraccesskey
+            - name: TWITTER_ACCESS_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: other-credentials
+                  key: twitteraccesssecret
+            - name: TWITTER_BOT_NAME
+              valueFrom:
+                secretKeyRef:
+                  name: other-credentials
+                  key: twitterbotname
+            - name: SPICE_TOKEN_ID
+              valueFrom:
+                secretKeyRef:
+                  name: other-credentials
+                  key: spicetokenid
+            - name: SPICE_FUNDING_SLP_ADDR
+              valueFrom:
+                secretKeyRef:
+                  name: other-credentials
+                  key: spicefundingslpaddr
+            - name: SPICE_FUNDING_CASH_ADDR
+              valueFrom:
+                secretKeyRef:
+                  name: other-credentials
+                  key: spicefundingcashaddr
+            - name: SPICE_FUNDING_WIF
+              valueFrom:
+                secretKeyRef:
+                  name: other-credentials
+                  key: spicefundingwif
+            - name: FAUCET_SLP_ADDR
+              valueFrom:
+                secretKeyRef:
+                  name: other-credentials
+                  key: faucetslpaddr
+            - name: FAUCET_CASH_ADDR
+              valueFrom:
+                secretKeyRef:
+                  name: other-credentials
+                  key: faucetcashaddr
+            - name: FAUCET_WIF
+              valueFrom:
+                secretKeyRef:
+                  name: other-credentials
+                  key: faucetwif
+            - name: RECAPTCHA_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: other-credentials
+                  key: recaptchasecret
+            - name: PARENT_XPUBKEY
+              valueFrom:
+                secretKeyRef:
+                  name: other-credentials
+                  key: parentxpubkey
+            - name: BCH_FEE_FUNDING_SLP_ADDRESS
+              valueFrom:
+                secretKeyRef:
+                  name: other-credentials
+                  key: bchfeefundingslpaddress
+            - name: BCH_FEE_FUNDING_CASH_ADDRESS
+              valueFrom:
+                secretKeyRef:
+                  name: other-credentials
+                  key: bchfeefundingcashaddress
+            - name: BCH_FEE_FUNDING_WIF
+              valueFrom:
+                secretKeyRef:
+                  name: other-credentials
+                  key: bchfeefundingwif
+            - name: REDDIT_CLIENT_ID
+              valueFrom:
+                secretKeyRef:
+                  name: other-credentials
+                  key: redditclientid
+            - name: REDDIT_CLIENT_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: other-credentials
+                  key: redditclientsecret
+            - name: REDDIT_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: other-credentials
+                  key: redditusername
+            - name: REDDIT_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: other-credentials
+                  key: redditpassword
+            - name: REDDIT_USER_AGENT
+              valueFrom:
+                secretKeyRef:
+                  name: other-credentials
+                  key: reddituseragent
+            - name: COINEX_ACCESS_ID
+              valueFrom:
+                secretKeyRef:
+                  name: other-credentials
+                  key: coinexaccessid
+            - name: COINEX_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: other-credentials
+                  key: coinexsecret

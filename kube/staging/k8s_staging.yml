@@ -1,0 +1,229 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: spicebot
+  namespace: spice-staging
+  labels:
+    app: spicebot
+spec:
+  selector:
+    app: spicebot
+  type: NodePort
+  ports:
+    - name: backend
+      port: 8000
+      targetPort: 8000
+      protocol: TCP
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: spicebot
+  namespace: spice-staging
+  labels:
+    app: spicebot
+spec:
+  replicas: 1
+  selector:
+    matchLabels:  
+      app: spicebot
+  template:
+    metadata:
+      labels:
+        app: spicebot
+    spec:
+      containers:
+        - name: spicebot
+          image: 967349720785.dkr.ecr.ap-southeast-1.amazonaws.com/spicebot-staging:ccb2f19da7c5
+          env:
+            - name: DEPLOYMENT_INSTANCE
+              value: staging
+            - name: POSTGRES_DB
+              value: spicebot-staging
+            - name: POSTGRES_HOST
+              valueFrom:
+                secretKeyRef:
+                  name: postgres-credentials-staging
+                  key: host
+            - name: POSTGRES_USER
+              valueFrom:
+                secretKeyRef:
+                  name: postgres-credentials-staging
+                  key: username
+            - name: POSTGRES_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: postgres-credentials-staging
+                  key: password
+            - name: REDIS_HOST
+              valueFrom:
+                secretKeyRef:
+                  name: redis-credentials-staging
+                  key: hostname
+            - name: REDIS_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: redis-credentials-staging
+                  key: password
+            - name: REDIS_PORT
+              valueFrom:
+                secretKeyRef:
+                  name: redis-credentials-staging
+                  key: port
+            - name: SLACK_CLIENT_ID
+              valueFrom:
+                secretKeyRef:
+                  name: other-credentials-staging
+                  key: slackclientid
+            - name: SLACK_CLIENT_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: other-credentials-staging
+                  key: slackclientsecret
+            - name: SLACK_VERIFICATION_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: other-credentials-staging
+                  key: slackverificationtoken
+            - name: SLACK_BOT_USER_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: other-credentials-staging
+                  key: slackbotusertoken
+            - name: SLACK_METRIC_CHANNEL
+              valueFrom:
+                secretKeyRef:
+                  name: other-credentials-staging
+                  key: slackmetricchannel
+            - name: TELEGRAM_BOT_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: other-credentials-staging
+                  key: telegrambottoken
+            - name: TELEGRAM_BOT_USER
+              valueFrom:
+                secretKeyRef:
+                  name: other-credentials-staging
+                  key: telegrambotuser
+            - name: TWITTER_CONSUMER_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: other-credentials-staging
+                  key: twitterconsumerkey
+            - name: TWITTER_CONSUMER_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: other-credentials-staging
+                  key: twitterconsumersecret
+            - name: TWITTER_ACCESS_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: other-credentials-staging
+                  key: twitteraccesskey
+            - name: TWITTER_ACCESS_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: other-credentials-staging
+                  key: twitteraccesssecret
+            - name: TWITTER_BOT_NAME
+              valueFrom:
+                secretKeyRef:
+                  name: other-credentials-staging
+                  key: twitterbotname
+            - name: SPICE_TOKEN_ID
+              valueFrom:
+                secretKeyRef:
+                  name: other-credentials-staging
+                  key: spicetokenid
+            - name: SPICE_FUNDING_SLP_ADDR
+              valueFrom:
+                secretKeyRef:
+                  name: other-credentials-staging
+                  key: spicefundingslpaddr
+            - name: SPICE_FUNDING_CASH_ADDR
+              valueFrom:
+                secretKeyRef:
+                  name: other-credentials-staging
+                  key: spicefundingcashaddr
+            - name: SPICE_FUNDING_WIF
+              valueFrom:
+                secretKeyRef:
+                  name: other-credentials-staging
+                  key: spicefundingwif
+            - name: FAUCET_SLP_ADDR
+              valueFrom:
+                secretKeyRef:
+                  name: other-credentials-staging
+                  key: faucetslpaddr
+            - name: FAUCET_CASH_ADDR
+              valueFrom:
+                secretKeyRef:
+                  name: other-credentials-staging
+                  key: faucetcashaddr
+            - name: FAUCET_WIF
+              valueFrom:
+                secretKeyRef:
+                  name: other-credentials-staging
+                  key: faucetwif
+            - name: RECAPTCHA_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: other-credentials-staging
+                  key: recaptchasecret
+            - name: PARENT_XPUBKEY
+              valueFrom:
+                secretKeyRef:
+                  name: other-credentials-staging
+                  key: parentxpubkey
+            - name: BCH_FEE_FUNDING_SLP_ADDRESS
+              valueFrom:
+                secretKeyRef:
+                  name: other-credentials-staging
+                  key: bchfeefundingslpaddress
+            - name: BCH_FEE_FUNDING_CASH_ADDRESS
+              valueFrom:
+                secretKeyRef:
+                  name: other-credentials-staging
+                  key: bchfeefundingcashaddress
+            - name: BCH_FEE_FUNDING_WIF
+              valueFrom:
+                secretKeyRef:
+                  name: other-credentials-staging
+                  key: bchfeefundingwif
+            - name: REDDIT_CLIENT_ID
+              valueFrom:
+                secretKeyRef:
+                  name: other-credentials-staging
+                  key: redditclientid
+            - name: REDDIT_CLIENT_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: other-credentials-staging
+                  key: redditclientsecret
+            - name: REDDIT_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: other-credentials-staging
+                  key: redditusername
+            - name: REDDIT_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: other-credentials-staging
+                  key: redditpassword
+            - name: REDDIT_USER_AGENT
+              valueFrom:
+                secretKeyRef:
+                  name: other-credentials-staging
+                  key: reddituseragent
+            - name: COINEX_ACCESS_ID
+              valueFrom:
+                secretKeyRef:
+                  name: other-credentials-staging
+                  key: coinexaccessid
+            - name: COINEX_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: other-credentials-staging
+                  key: coinexsecret
+      nodeSelector:
+        eks.amazonaws.com/nodegroup: spicebot-node-group

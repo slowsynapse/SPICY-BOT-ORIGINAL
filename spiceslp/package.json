@@ -1,0 +1,15 @@
+{
+  "name": "spiceslp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "send-bch.js",
+  "dependencies": {
+    "watchtower-cash-js": "^0.1.12"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
